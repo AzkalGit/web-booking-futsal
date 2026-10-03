@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk - Garuda Arena</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="js/tailwind-config-shared.js"></script>
+    <link rel="stylesheet" href="css/garuda-shared.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="ga-auth" data-auth-mode="login">
+    <main class="auth-card">
+        <section class="auth-visual" aria-hidden="true">
+            <a href="index.html" class="auth-logo"><i class="fa-solid fa-futbol"></i></a>
+            <div>
+                <small>Siap main?</small>
+                <h2>Cari lapangan, pilih jam, dan booking dalam satu tempat.</h2>
+            </div>
+        </section>
+
+        <section class="auth-form-wrap">
+            <form id="auth-form" class="auth-form" novalidate>
+                <h1>Masuk ke akun</h1>
+                <p class="sub">Masuk untuk melihat jadwal dan mengelola booking lapangan futsalmu.</p>
+
+                <div id="auth-error" class="auth-error" role="alert"></div>
+
+                <label class="auth-label" for="email">Email kamu</label>
+                <input class="auth-input" type="email" id="email" placeholder="contoh@gmail.com" autocomplete="email" required>
+
+                <label class="auth-label" for="password">Password</label>
+                <input class="auth-input" type="password" id="password" placeholder="••••••••" autocomplete="current-password" required>
+
+                <button type="submit" class="auth-btn">Masuk</button>
+
+                <div class="auth-divider">atau lanjut dengan</div>
+                <div class="auth-social">
+                    <button type="button" data-social aria-label="Google"><i class="fa-brands fa-google" style="color:#DB4437"></i></button>
+                    <button type="button" data-social aria-label="Facebook"><i class="fa-brands fa-facebook-f" style="color:#1877F2"></i></button>
+                    <button type="button" data-social aria-label="VK"><i class="fa-brands fa-vk" style="color:#0077FF"></i></button>
+                </div>
+
+                <p class="auth-switch">Belum punya akun? <a href="register.html">Daftar</a></p>
+            </form>
+        </section>
+    </main>
+    <script src="js/booking-storage.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
