@@ -1,6 +1,10 @@
 // Sumber data tunggal untuk seluruh halaman Garuda Arena.
 // Data ini masih berupa data simulasi untuk prototipe tugas kuliah.
 window.GARUDA_ARENA_DATA = {
+    // Naikkan angka ini setiap kali data LAPANGAN di bawah diubah (nama, harga, gambar, dll).
+    // Browser yang masih menyimpan data lama di localStorage akan otomatis memakai data baru.
+    DATA_VERSION: 2,
+
     LAPANGAN: [
         {
             id: 1,
@@ -63,7 +67,7 @@ window.GARUDA_ARENA_DATA = {
             ukuran: "25 x 15 m",
             kapasitas: "10 pemain",
             fasilitas: ["Free Wi-Fi", "Parkir Luas", "Kantin & Cafe"],
-            gambar: "images/2-venue-interlock.jpg",
+            gambar: "images/9-lapangan-interlock-biru-hijau.jpg",
             status: "Aktif"
         },
         {
@@ -79,7 +83,7 @@ window.GARUDA_ARENA_DATA = {
             ukuran: "30 x 18 m",
             kapasitas: "12 pemain",
             fasilitas: ["Kantin & Cafe", "Musala", "Parkir Luas"],
-            gambar: "images/3-venue-rumput.jpg",
+            gambar: "images/10-lapangan-rumput-outdoor.jpg",
             status: "Aktif"
         },
         {
@@ -95,7 +99,7 @@ window.GARUDA_ARENA_DATA = {
             ukuran: "40 x 20 m",
             kapasitas: "14 pemain",
             fasilitas: ["Parkir Luas", "Shower Air Panas", "Pencahayaan Malam", "Kantin & Cafe"],
-            gambar: "images/3-venue-rumput.jpg",
+            gambar: "images/12-lapangan-outdoor-senja.jpg",
             status: "Perawatan"
         },
         {
@@ -111,7 +115,7 @@ window.GARUDA_ARENA_DATA = {
             ukuran: "40 x 22 m",
             kapasitas: "14 pemain",
             fasilitas: ["Tribun Penonton", "Locker Room", "Papan Skor", "AC Central", "Live Streaming Ready"],
-            gambar: "images/4-venue-vinyl.jpg",
+            gambar: "images/11-lapangan-vinyl-biru.jpg",
             status: "Aktif"
         },
         {
@@ -127,7 +131,7 @@ window.GARUDA_ARENA_DATA = {
             ukuran: "25 x 15 m",
             kapasitas: "10 pemain",
             fasilitas: ["Free Wi-Fi", "Musala", "Parkir Luas"],
-            gambar: "images/2-venue-interlock.jpg",
+            gambar: "images/13-lapangan-indoor-pertandingan.jpg",
             status: "Aktif"
         }
     ],

@@ -115,7 +115,7 @@ function setImageWithFallback(img, src, alt) {
     img.alt = alt;
     img.onerror = () => {
         img.onerror = null;
-        img.src = 'images/1-hero-lapangan-senja.jpg';
+        img.src = 'images/1-hero-gedung-malam.jpg';
         img.alt = `${alt} - gambar cadangan`;
     };
     img.src = src;

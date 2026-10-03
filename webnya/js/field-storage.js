@@ -2,6 +2,7 @@
 // Data awal berasal dari js/data-lapangan.js; perubahan admin disimpan di localStorage.
 (function () {
     const STORAGE_KEY = 'garudaArenaFields';
+    const VERSION_KEY = 'garudaArenaFieldsVersion';
 
     function clone(data) {
         return JSON.parse(JSON.stringify(data || []));
@@ -27,8 +28,15 @@
             ...field
         }));
         const stored = readStored();
-        if (!Array.isArray(stored) || !stored.length) {
+        const currentVersion = String(window.GARUDA_ARENA_DATA.DATA_VERSION || 1);
+        let storedVersion = null;
+        try { storedVersion = localStorage.getItem(VERSION_KEY); } catch (error) { /* abaikan */ }
+
+        // Data awal berubah (versi beda) atau belum ada data: pakai data awal terbaru.
+        // Catatan: perubahan lapangan dari panel admin ikut ter-reset saat versi dinaikkan.
+        if (!Array.isArray(stored) || !stored.length || storedVersion !== currentVersion) {
             writeStored(base);
+            try { localStorage.setItem(VERSION_KEY, currentVersion); } catch (error) { /* abaikan */ }
             return base;
         }
         return stored;
