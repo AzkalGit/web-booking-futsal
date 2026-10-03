@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Lapangan - Garuda Arena</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Poppins & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <script src="js/detail-lapangan-tailwind-config.js"></script>
+    <script src="js/image-fallback.js"></script>
+<script src="js/data-lapangan.js"></script>
+    <script src="js/field-storage.js"></script>
+    <script src="js/booking-storage.js"></script>
+    <link rel="stylesheet" href="css/detail-lapangan.css">
+    <link rel="stylesheet" href="css/garuda-shared.css">
+</head>
+<body class="flex flex-col min-h-screen bg-[#F9FAFB] text-[#111827]">
+
+    <!-- HEADER (Disalin persis dari halaman acuan, menu aktif: Daftar Lapangan) -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html#home" class="flex items-center space-x-3 group">
+                    <div class="w-11 h-11 bg-gradient-to-tr from-green-800 to-green-600 rounded-2xl flex items-center justify-center text-white shadow-md shadow-green-500/30 group-hover:scale-[1.02] transition-transform">
+                        <i class="fa-solid fa-futbol text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold bg-gradient-to-r from-green-700 to-green-900 bg-clip-text text-transparent">Garuda Arena</span>
+                        <span class="block text-xs font-medium text-gray-400 tracking-wider">FUTSAL &amp; SPORT</span>
+                    </div>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                    <a href="index.html#home" class="text-gray-600 hover:text-green-700 transition-colors">Beranda</a>
+                    <a href="daftar-lapangan.html" class="text-green-700 font-semibold transition-colors">Daftar Lapangan</a>
+                    <a href="index.html#features" class="text-gray-600 hover:text-green-700 transition-colors">Fasilitas</a>
+                    <a href="index.html#gallery" class="text-gray-600 hover:text-green-700 transition-colors">Galeri</a>
+                    <a href="index.html#contact" class="text-gray-600 hover:text-green-700 transition-colors">Kontak</a>
+                    <a href="riwayat-booking.html" class="text-gray-600 hover:text-green-700 transition-colors">Riwayat Booking</a>
+                    <a href="admin-dashboard.html" class="text-gray-600 hover:text-green-700 transition-colors">Panel Admin</a>
+                </nav>
+                <div class="hidden md:flex items-center">
+                    <a href="daftar-lapangan.html" class="bg-orange-600 hover:bg-orange-700 text-white font-medium px-6 py-3 rounded-full shadow-lg shadow-orange-600/25 transition-all transform hover:-translate-y-0.5">
+                        Booking Sekarang <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-green-700 focus:outline-none p-2" aria-expanded="false" aria-controls="mobile-menu" aria-label="Buka Menu">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="ga-mobile-menu hidden md:hidden bg-white border-b border-gray-100 px-4 pt-2 pb-6 space-y-3">
+            <a href="index.html#home" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-green-700 transition-colors">Beranda</a>
+            <a href="daftar-lapangan.html" class="block px-3 py-2 rounded-lg text-base font-semibold text-green-700 bg-green-50">Daftar Lapangan</a>
+            <a href="index.html#features" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-green-700 transition-colors">Fasilitas</a>
+            <a href="index.html#gallery" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-green-700 transition-colors">Galeri</a>
+            <a href="index.html#contact" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-green-700 transition-colors">Kontak</a>
+            <a href="riwayat-booking.html" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-green-700 transition-colors">Riwayat Booking</a>
+            <a href="admin-dashboard.html" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-green-700 transition-colors">Panel Admin</a>
+            <div class="pt-4">
+                <a href="daftar-lapangan.html" class="w-full text-center block bg-green-700 hover:bg-green-800 text-white font-medium py-3 rounded-xl shadow-md transition-colors">Booking Sekarang</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow">
+        <!-- NOT FOUND STATE (Hidden by default) -->
+        <div id="not-found-state" class="hidden max-w-3xl mx-auto px-4 py-24 text-center">
+            <div class="w-20 h-20 bg-[#DCFCE7] text-[#15803D] rounded-full flex items-center justify-center mx-auto mb-6 text-3xl shadow-sm">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h1 class="font-poppins font-extrabold text-3xl text-[#111827] mb-3">Lapangan Tidak Ditemukan</h1>
+            <p class="text-[#6B7280] text-lg mb-8">Maaf, lapangan yang Anda cari tidak tersedia atau URL tidak valid.</p>
+            <a href="daftar-lapangan.html" class="inline-flex items-center space-x-2 bg-[#15803D] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#14532D] transition shadow-sm">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Kembali ke Daftar Lapangan</span>
+            </a>
+        </div>
+
+        <!-- DETAIL WRAPPER -->
+        <div id="detail-wrapper" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Breadcrumb -->
+            <nav class="flex text-sm text-[#6B7280] mb-6 space-x-2 overflow-x-auto whitespace-nowrap pb-2">
+                <a href="index.html#home" class="hover:text-[#15803D]">Beranda</a>
+                <span>/</span>
+                <a href="daftar-lapangan.html" class="hover:text-[#15803D]">Daftar Lapangan</a>
+                <span>/</span>
+                <span id="breadcrumb-nama" class="text-[#111827] font-medium">Detail Lapangan</span>
+            </nav>
+
+            <!-- 2 Columns Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- KOLOM KIRI (Konten Detail) -->
+                <div class="lg:col-span-2 space-y-8">
+                    
+                    <!-- a. Galeri -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-6 border border-[#E5E7EB] shadow-sm space-y-4">
+                        <div class="w-full aspect-[16/10] bg-[#DCFCE7] rounded-2xl overflow-hidden relative shadow-inner">
+                            <img id="main-image" src="images/2-venue-interlock.jpg" alt="Foto Utama Lapangan" class="w-full h-full object-cover transition-opacity duration-300">
+                        </div>
+                        <div id="thumbnail-container" class="grid grid-cols-4 gap-2 sm:gap-4">
+                            <!-- Thumbnail items injected via JS -->
+                        </div>
+                    </div>
+
+                    <!-- b. Judul & Info Utama -->
+                    <div class="bg-white rounded-2xl p-6 border border-[#E5E7EB] shadow-sm space-y-3">
+                        <div class="flex flex-wrap items-center gap-3">
+                            <span id="detail-badge" class="px-3 py-1 bg-[#DCFCE7] text-[#14532D] font-semibold text-xs rounded-full uppercase tracking-wider">Interlock</span>
+                            <div class="flex items-center text-[#F59E0B] text-sm font-semibold">
+                                <i class="fa-solid fa-star mr-1"></i>
+                                <span id="detail-rating">4.6</span>
+                                <span class="text-[#6B7280] font-normal ml-1" id="detail-ulasan-count">(16 ulasan)</span>
+                            </div>
+                        </div>
+                        <h1 id="detail-nama" class="font-poppins font-extrabold text-2xl sm:text-3xl text-[#111827]">Garuda Arena VIP</h1>
+                        <p class="text-[#6B7280] flex items-center text-sm sm:text-base">
+                            <i class="fa-solid fa-location-dot text-[#15803D] mr-2"></i>
+                            <span id="detail-lokasi">Arena Utama Lantai 1</span>
+                        </p>
+                    </div>
+
+                    <!-- c. Tentang Lapangan -->
+                    <div class="bg-white rounded-2xl p-6 border border-[#E5E7EB] shadow-sm space-y-3">
+                        <h2 class="font-poppins font-bold text-xl text-[#111827]">Tentang Lapangan</h2>
+                        <p id="detail-deskripsi" class="text-[#6B7280] leading-relaxed text-base">
+                            Deskripsi lapangan akan dimuat di sini...
+                        </p>
+                    </div>
+
+                    <!-- d. Spesifikasi -->
+                    <div class="bg-white rounded-2xl p-6 border border-[#E5E7EB] shadow-sm space-y-4">
+                        <h2 class="font-poppins font-bold text-xl text-[#111827]">Spesifikasi Lapangan</h2>
+                        <div id="spesifikasi-container" class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- e. Fasilitas -->
+                    <div class="bg-white rounded-2xl p-6 border border-[#E5E7EB] shadow-sm space-y-4">
+                        <h2 class="font-poppins font-bold text-xl text-[#111827]">Fasilitas Tersedia</h2>
+                        <div id="fasilitas-container" class="flex flex-wrap gap-2.5">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- f. Ulasan -->
+                    <div class="bg-white rounded-2xl p-6 border border-[#E5E7EB] shadow-sm space-y-6">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-[#E5E7EB] gap-4">
+                            <div>
+                                <h2 class="font-poppins font-bold text-xl text-[#111827]">Ulasan Pengguna</h2>
+                                <p class="text-sm text-[#6B7280]">Penilaian jujur dari pemain yang telah memesan</p>
+                            </div>
+                            <div class="flex items-center space-x-3 bg-[#DCFCE7] px-4 py-2.5 rounded-xl">
+                                <div class="text-[#F59E0B] text-lg font-bold"><i class="fa-solid fa-star"></i></div>
+                                <div>
+                                    <div class="font-poppins font-bold text-lg text-[#14532D]" id="summary-rating-num">4.6 / 5.0</div>
+                                    <div class="text-xs text-[#15803D] font-medium" id="summary-ulasan-text">Berdasarkan 16 ulasan</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ulasan List -->
+                        <div id="ulasan-container" class="space-y-4">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- g. Lapangan Serupa -->
+                    <div class="space-y-4">
+                        <h2 class="font-poppins font-bold text-xl text-[#111827]">Lapangan Serupa</h2>
+                        <div id="serupa-container" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- KOLOM KANAN (Kartu Booking Sticky Desktop) -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-2xl p-6 border border-[#E5E7EB] shadow-md sticky top-28 space-y-6">
+                        
+                        <!-- a. Harga -->
+                        <div class="flex items-baseline justify-between border-b border-[#E5E7EB] pb-4">
+                            <div>
+                                <span class="text-xs font-medium text-[#6B7280] uppercase tracking-wider">Tarif Sewa</span>
+                                <div class="font-poppins font-extrabold text-2xl text-[#15803D]" id="booking-harga-text">Rp 180.000</div>
+                            </div>
+                            <span class="text-sm font-semibold text-[#6B7280]">/ jam</span>
+                        </div>
+
+                        <!-- b. Input Tanggal -->
+                        <div class="space-y-2">
+                            <label for="tanggal-input" class="block text-sm font-semibold text-[#111827]">Pilih Tanggal</label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#6B7280]">
+                                    <i class="fa-regular fa-calendar"></i>
+                                </span>
+                                <input type="date" id="tanggal-input" class="w-full pl-10 pr-4 py-2.5 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl text-sm font-medium text-[#111827] focus:outline-none focus:border-[#15803D] focus:ring-1 focus:ring-[#15803D] transition">
+                            </div>
+                        </div>
+
+                        <!-- c. Grid Slot Jam -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <label class="block text-sm font-semibold text-[#111827]">Pilih Slot Jam Mulai</label>
+                                <span class="text-xs text-[#6B7280]">08:00 - 23:00</span>
+                            </div>
+                            
+                            <!-- Slot Container -->
+                            <div id="slot-grid" class="grid grid-cols-3 gap-2 max-h-56 overflow-y-auto pr-1">
+                                <!-- Slots injected by JS -->
+                            </div>
+
+                            <!-- Error message slot/durasi -->
+                            <p id="slot-error-msg" class="text-xs text-[#EF4444] font-medium hidden mt-1">
+                                <i class="fa-solid fa-circle-exclamation mr-1"></i> <span id="error-text-content">Durasi ini bertabrakan dengan slot yang sudah terisi</span>
+                            </p>
+
+                            <!-- Legenda Slot -->
+                            <div class="flex flex-wrap items-center justify-between pt-2 text-xs text-[#6B7280] gap-2 border-t border-[#E5E7EB]">
+                                <div class="flex items-center space-x-1.5">
+                                    <div class="w-3 h-3 rounded-full bg-[#DCFCE7] border border-[#15803D]"></div>
+                                    <span>Tersedia</span>
+                                </div>
+                                <div class="flex items-center space-x-1.5">
+                                    <div class="w-3 h-3 rounded-full bg-[#15803D]"></div>
+                                    <span>Dipilih</span>
+                                </div>
+                                <div class="flex items-center space-x-1.5">
+                                    <div class="w-3 h-3 rounded-full bg-[#E5E7EB]"></div>
+                                    <span>Terisi / Lewat</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- d. Pilihan Durasi -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-[#111827]">Durasi Sewa</label>
+                            <div class="grid grid-cols-3 gap-2" role="group" aria-label="Pilihan Durasi">
+                                <button type="button" data-durasi="1" class="durasi-btn py-2 text-sm font-semibold rounded-xl border border-[#15803D] bg-[#15803D] text-white transition shadow-sm" aria-pressed="true">1 Jam</button>
+                                <button type="button" data-durasi="2" class="durasi-btn py-2 text-sm font-semibold rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] text-[#111827] hover:border-[#15803D] transition" aria-pressed="false">2 Jam</button>
+                                <button type="button" data-durasi="3" class="durasi-btn py-2 text-sm font-semibold rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] text-[#111827] hover:border-[#15803D] transition" aria-pressed="false">3 Jam</button>
+                            </div>
+                        </div>
+
+                        <!-- e. Ringkasan -->
+                        <div class="bg-[#F9FAFB] rounded-xl p-4 border border-[#E5E7EB] space-y-2 text-sm">
+                            <div class="flex justify-between text-[#6B7280]">
+                                <span>Lapangan:</span>
+                                <span id="summary-lapangan-nama" class="font-medium text-[#111827] text-right truncate max-w-[180px]">Garuda Arena VIP</span>
+                            </div>
+                            <div class="flex justify-between text-[#6B7280]">
+                                <span>Tanggal:</span>
+                                <span id="summary-tanggal-text" class="font-medium text-[#111827] text-right">Sabtu, 3 Okt 2026</span>
+                            </div>
+                            <div class="flex justify-between text-[#6B7280]">
+                                <span>Jam Mulai:</span>
+                                <span id="summary-jam-text" class="font-medium text-[#111827] text-right">-</span>
+                            </div>
+                            <div class="flex justify-between text-[#6B7280]">
+                                <span>Durasi:</span>
+                                <span id="summary-durasi-text" class="font-medium text-[#111827] text-right">1 Jam</span>
+                            </div>
+                            <div class="border-t border-[#E5E7EB] pt-2 mt-2 flex justify-between items-center">
+                                <span class="font-bold text-[#111827]">TOTAL:</span>
+                                <span id="summary-total-text" class="font-poppins font-extrabold text-lg text-[#15803D]">Rp 0</span>
+                            </div>
+                        </div>
+
+                        <!-- f. Tombol Oranye Booking Sekarang -->
+                        <div>
+                            <a id="btn-booking-action" href="#" class="block w-full text-center bg-[#EA580C] text-white py-3.5 px-4 rounded-xl font-poppins font-bold text-base hover:bg-[#C2410C] transition shadow-md opacity-50 cursor-not-allowed pointer-events-none">
+                                Booking Sekarang
+                            </a>
+                        </div>
+
+                        <!-- g. Catatan Kecil -->
+                        <p class="text-xs text-[#6B7280] text-center leading-relaxed">
+                            Pembayaran lewat transfer manual. Slot ditahan 1 jam setelah booking.
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- MOBILE STICKY BOTTOM BAR -->
+    <div id="mobile-sticky-bar" class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-[#E5E7EB] p-4 z-40 shadow-lg flex items-center justify-between">
+        <div>
+            <div class="text-xs text-[#6B7280]">Total Pembayaran</div>
+            <div id="mobile-total-price" class="font-poppins font-extrabold text-lg text-[#15803D]">Rp 0</div>
+        </div>
+        <a id="mobile-btn-booking" href="#" class="bg-[#EA580C] text-white px-6 py-3 rounded-xl font-poppins font-bold text-sm hover:bg-[#C2410C] transition opacity-50 cursor-not-allowed pointer-events-none shadow-md">
+            Booking Sekarang
+        </a>
+    </div>
+
+    <!-- FOOTER (Disalin persis dari halaman acuan, hijau tua #14532D) -->
+    <footer id="contact" class="bg-green-900 text-white pt-16 pb-12 mt-20 border-t border-green-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-green-800">
+                <!-- Brand Info -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-green-700 rounded-xl flex items-center justify-center text-white">
+                            <i class="fa-solid fa-futbol text-lg"></i>
+                        </div>
+                        <span class="text-xl font-bold tracking-wider">Garuda Arena</span>
+                    </div>
+                    <p class="text-sm text-green-100/70 max-w-sm leading-relaxed">
+                        Pusat booking lapangan futsal modern, bersih, dan berstandar profesional terbaik di kota Anda. Mainkan hobimu dengan kenyamanan maksimal.
+                    </p>
+                    <div class="flex space-x-3 pt-2">
+                        <span aria-label="Instagram belum tersedia" title="Instagram belum tersedia" class="w-10 h-10 rounded-full bg-green-800 flex items-center justify-center text-green-100"><i class="fa-brands fa-instagram"></i></span>
+                        <span aria-label="Facebook belum tersedia" title="Facebook belum tersedia" class="w-10 h-10 rounded-full bg-green-800 flex items-center justify-center text-green-100"><i class="fa-brands fa-facebook-f"></i></span>
+                        <span aria-label="WhatsApp belum tersedia" title="WhatsApp belum tersedia" class="w-10 h-10 rounded-full bg-green-800 flex items-center justify-center text-green-100"><i class="fa-brands fa-whatsapp"></i></span>
+                        <span aria-label="TikTok belum tersedia" title="TikTok belum tersedia" class="w-10 h-10 rounded-full bg-green-800 flex items-center justify-center text-green-100"><i class="fa-brands fa-tiktok"></i></span>
+                    </div>
+                </div>
+
+                <!-- Links 1 -->
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-green-100 mb-4">Navigasi</h4>
+                    <ul class="space-y-2.5 text-sm text-green-100/70">
+                        <li><a href="index.html#home" class="hover:text-white transition-colors">Beranda</a></li>
+                        <li><a href="daftar-lapangan.html" class="hover:text-white transition-colors">Daftar Lapangan</a></li>
+                        <li><a href="index.html#features" class="hover:text-white transition-colors">Fasilitas</a></li>
+                        <li><a href="index.html#gallery" class="hover:text-white transition-colors">Galeri Foto</a></li>
+                    </ul>
+                </div>
+
+                <!-- Links 2 -->
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-green-100 mb-4">Jenis Lapangan</h4>
+                    <ul class="space-y-2.5 text-sm text-green-100/70">
+                        <li><a href="daftar-lapangan.html?jenis=interlock" class="hover:text-white transition-colors">Interlock</a></li>
+                        <li><a href="daftar-lapangan.html?jenis=rumput" class="hover:text-white transition-colors">Rumput</a></li>
+                        <li><a href="daftar-lapangan.html?jenis=vinyl" class="hover:text-white transition-colors">Vinyl</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-green-100 mb-4">Hubungi Kami</h4>
+                    <ul class="space-y-3 text-sm text-green-100/70">
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-location-dot text-green-300 mt-1"></i>
+                            <span>Jl. Stadion Olahraga No. 88, Banda Aceh, Indonesia</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-phone text-green-300"></i>
+                            <span>+62 812-3456-7890</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-envelope text-green-300"></i>
+                            <span>booking@garudaarena.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-green-200/70">
+                <p>Prototipe tugas kuliah – Kelompok 6</p>
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <span class="text-green-100/50 cursor-default" aria-disabled="true">Kebijakan Privasi</span>
+                    <span class="text-green-100/50 cursor-default" aria-disabled="true">Syarat &amp; Ketentuan</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script src="js/detail-lapangan.js"></script>
+</body>
+</html>

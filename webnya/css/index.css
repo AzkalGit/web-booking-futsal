@@ -1,0 +1,25 @@
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 5rem; }
+h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+.hero-wave {
+    background: linear-gradient(135deg, #14532D 0%, #15803D 100%);
+    border-bottom-left-radius: 50% 40px;
+    border-bottom-right-radius: 50% 40px;
+}
+@media (min-width: 768px) {
+    .hero-wave {
+        border-bottom-left-radius: 50% 80px;
+        border-bottom-right-radius: 50% 80px;
+    }
+}
+.custom-shadow {
+    box-shadow: 0 15px 35px -5px rgba(21, 128, 61, 0.15), 0 10px 15px -5px rgba(0, 0, 0, 0.04);
+}
+.card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -10px rgba(21, 128, 61, 0.25);
+}

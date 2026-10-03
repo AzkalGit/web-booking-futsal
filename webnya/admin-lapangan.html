@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kelola Lapangan - Garuda Arena</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="js/tailwind-config-shared.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/garuda-shared.css">
+</head>
+<body class="bg-[#F9FAFB] text-[#111827] min-h-screen">
+<div class="min-h-screen flex">
+    <aside class="ga-admin-sidebar w-64 shrink-0 bg-[#14532D] p-5 flex flex-col">
+        <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 bg-green-700 rounded-xl flex items-center justify-center text-white"><i class="fa-solid fa-futbol"></i></div>
+            <div><div class="text-white font-bold">Garuda Arena</div><div class="text-xs text-green-200/70">Panel Admin</div></div>
+        </div>
+        <nav class="space-y-1" aria-label="Navigasi admin">
+            <a href="admin-dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-green-100/80 hover:bg-green-800/60"><i class="fa-solid fa-gauge w-5"></i><span>Dashboard</span></a>
+            <a href="admin-lapangan.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium bg-green-700 text-white"><i class="fa-solid fa-futbol w-5"></i><span>Kelola Lapangan</span></a>
+            <a href="admin-booking.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-green-100/80 hover:bg-green-800/60"><i class="fa-solid fa-calendar-check w-5"></i><span>Kelola Booking</span></a>
+            <a href="admin-laporan.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-green-100/80 hover:bg-green-800/60"><i class="fa-solid fa-chart-simple w-5"></i><span>Laporan</span></a>
+        </nav>
+        <div class="mt-auto text-xs text-green-200/70 px-2 pt-8">Prototipe tugas kuliah &ndash; Kelompok 6</div>
+    </aside>
+<div id="admin-mobile-menu" class="hidden fixed inset-0 z-[60] md:hidden" aria-hidden="true">
+    <button id="admin-mobile-backdrop" type="button" class="absolute inset-0 bg-black/40" aria-label="Tutup menu admin"></button>
+    <aside class="absolute left-0 top-0 bottom-0 w-[18rem] max-w-[85vw] bg-[#14532D] p-5 shadow-2xl overflow-y-auto">
+        <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center gap-3"><div class="w-10 h-10 bg-green-700 rounded-xl flex items-center justify-center text-white"><i class="fa-solid fa-futbol"></i></div><div><div class="text-white font-bold">Garuda Arena</div><div class="text-xs text-green-200/70">Panel Admin</div></div></div>
+            <button id="admin-mobile-close" type="button" class="w-9 h-9 rounded-lg text-green-100 hover:bg-green-800" aria-label="Tutup menu admin"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <nav class="space-y-1" aria-label="Navigasi admin seluler">
+            <a href="admin-dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-green-100/90 hover:bg-green-800/60"><i class="fa-solid fa-gauge w-5"></i><span>Dashboard</span></a>
+            <a href="admin-lapangan.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-green-100/90 hover:bg-green-800/60"><i class="fa-solid fa-futbol w-5"></i><span>Kelola Lapangan</span></a>
+            <a href="admin-booking.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-green-100/90 hover:bg-green-800/60"><i class="fa-solid fa-calendar-check w-5"></i><span>Kelola Booking</span></a>
+            <a href="admin-laporan.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-green-100/90 hover:bg-green-800/60"><i class="fa-solid fa-chart-simple w-5"></i><span>Laporan</span></a>
+        </nav>
+        <div class="mt-10 text-xs text-green-200/70 px-2">Prototipe tugas kuliah – Kelompok 6</div>
+    </aside>
+</div>
+
+
+    <div class="ga-admin-content flex-1 min-w-0">
+        <header class="h-16 bg-white border-b border-[#E5E7EB] px-5 sm:px-8 flex items-center justify-between gap-4">
+            <button id="admin-mobile-menu-btn" type="button" class="ga-admin-mobile-trigger items-center justify-center w-10 h-10 rounded-xl border border-[#E5E7EB] text-[#14532D] bg-white" aria-expanded="false" aria-controls="admin-mobile-menu" aria-label="Buka menu admin"><i class="fa-solid fa-bars"></i></button>
+            <div class="sm:hidden font-poppins font-bold text-[#14532D]">Garuda Arena</div>
+            <div class="ml-auto flex items-center gap-3 text-sm font-medium"><div class="w-9 h-9 rounded-full bg-[#15803D] text-white flex items-center justify-center font-bold">AD</div><span class="hidden sm:inline">Admin</span></div>
+        </header>
+
+        <main class="p-5 sm:p-8 space-y-6">
+            <section class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4">
+                <div>
+                    <h1 class="font-poppins font-extrabold text-2xl">Kelola Lapangan</h1>
+                    <p id="field-subtitle" class="text-sm text-[#6B7280] mt-1">Kelola data, tarif, dan status ketersediaan lapangan.</p>
+                </div>
+                <button id="add-field-btn" type="button" class="bg-[#EA580C] hover:bg-[#C2410C] text-white font-bold px-5 py-2.5 rounded-xl text-sm shadow-md"><i class="fa-solid fa-plus mr-2"></i>Tambah Lapangan</button>
+            </section>
+
+            <section class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="bg-white rounded-2xl border border-[#E5E7EB] p-4"><div class="text-xs text-[#6B7280]">Total</div><div id="stat-total" class="font-poppins font-extrabold text-2xl mt-1">0</div></div>
+                <div class="bg-white rounded-2xl border border-[#E5E7EB] p-4"><div class="text-xs text-[#6B7280]">Aktif</div><div id="stat-active" class="font-poppins font-extrabold text-2xl text-[#15803D] mt-1">0</div></div>
+                <div class="bg-white rounded-2xl border border-[#E5E7EB] p-4"><div class="text-xs text-[#6B7280]">Perawatan / Nonaktif</div><div id="stat-other" class="font-poppins font-extrabold text-2xl text-[#C2410C] mt-1">0</div></div>
+            </section>
+
+            <section class="bg-white rounded-2xl border border-[#E5E7EB] shadow-sm p-4 sm:p-5">
+                <div class="flex flex-col lg:flex-row gap-3">
+                    <label class="relative flex-1"><span class="sr-only">Cari lapangan</span><i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-[#9CA3AF]"></i><input id="field-search" type="search" placeholder="Cari nama atau lokasi lapangan..." class="w-full pl-9 pr-4 py-2.5 rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] text-sm outline-none focus:ring-2 focus:ring-green-200 focus:border-[#15803D]"></label>
+                    <select id="field-type-filter" class="px-4 py-2.5 rounded-xl border border-[#E5E7EB] bg-white text-sm"><option value="all">Semua jenis</option><option value="interlock">Interlock</option><option value="rumput">Rumput</option><option value="vinyl">Vinyl</option></select>
+                    <select id="field-status-filter" class="px-4 py-2.5 rounded-xl border border-[#E5E7EB] bg-white text-sm"><option value="all">Semua status</option><option value="Aktif">Aktif</option><option value="Perawatan">Perawatan</option><option value="Nonaktif">Nonaktif</option></select>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-2xl border border-[#E5E7EB] shadow-sm overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full min-w-[980px] text-sm">
+                        <thead class="bg-[#F9FAFB]"><tr>
+                            <th class="text-left font-semibold text-[#6B7280] px-5 py-3">Lapangan</th>
+                            <th class="text-left font-semibold text-[#6B7280] px-5 py-3">Jenis</th>
+                            <th class="text-left font-semibold text-[#6B7280] px-5 py-3">Tarif</th>
+                            <th class="text-left font-semibold text-[#6B7280] px-5 py-3">Rating</th>
+                            <th class="text-left font-semibold text-[#6B7280] px-5 py-3">Lokasi</th>
+                            <th class="text-left font-semibold text-[#6B7280] px-5 py-3">Status</th>
+                            <th class="text-left font-semibold text-[#6B7280] px-5 py-3">Aksi</th>
+                        </tr></thead>
+                        <tbody id="field-table-body"></tbody>
+                    </table>
+                </div>
+                <div id="field-empty" class="hidden p-10 text-center text-sm text-[#6B7280]">Tidak ada lapangan yang sesuai filter.</div>
+            </section>
+        </main>
+    </div>
+</div>
+
+<div id="field-modal" class="hidden fixed inset-0 z-50 bg-black/50 p-4 flex items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="field-modal-title">
+    <div class="bg-white w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-xl">
+        <div class="px-6 py-5 border-b border-[#E5E7EB] flex items-center justify-between gap-4">
+            <div><h2 id="field-modal-title" class="font-poppins font-bold text-xl">Tambah Lapangan</h2><p class="text-xs text-[#6B7280] mt-1">Data ini disimpan sebagai simulasi frontend.</p></div>
+            <button id="field-modal-close" type="button" class="w-9 h-9 rounded-lg hover:bg-[#F3F4F6] text-[#6B7280]" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <form id="field-form" class="p-6 space-y-5">
+            <input id="field-id" type="hidden">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <label class="sm:col-span-2"><span class="block text-sm font-semibold mb-1.5">Nama lapangan</span><input id="field-name" required class="w-full px-3.5 py-2.5 rounded-xl border border-[#E5E7EB] text-sm outline-none focus:ring-2 focus:ring-green-200 focus:border-[#15803D]"></label>
+                <label><span class="block text-sm font-semibold mb-1.5">Jenis</span><select id="field-type" required class="w-full px-3.5 py-2.5 rounded-xl border border-[#E5E7EB] text-sm"><option value="interlock">Interlock</option><option value="rumput">Rumput</option><option value="vinyl">Vinyl</option></select></label>
+                <label><span class="block text-sm font-semibold mb-1.5">Tarif / jam</span><input id="field-price" type="number" min="0" step="1000" required class="w-full px-3.5 py-2.5 rounded-xl border border-[#E5E7EB] text-sm"></label>
+                <label><span class="block text-sm font-semibold mb-1.5">Rating</span><input id="field-rating" type="number" min="0" max="5" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl border border-[#E5E7EB] text-sm"></label>
+                <label><span class="block text-sm font-semibold mb-1.5">Jumlah ulasan</span><input id="field-reviews" type="number" min="0" step="1" class="w-full px-3.5 py-2.5 rounded-xl border border-[#E5E7EB] text-sm"></label>
+                <label class="sm:col-span-2"><span class="block text-sm font-semibold mb-1.5">Lokasi</span><input id="field-location" required class="w-full px-3.5 py-2.5 rounded-xl border border-[#E5E7EB] text-sm"></label>
+                <label><span class="block text-sm font-semibold mb-1.5">Ukuran</span><input id="field-size" placeholder="25 x 15 m" class="w-full px-3.5 py-2.5 rounded-xl border border-[#E5E7EB] text-sm"></label>
+                <label><span class="block text-sm font-semibold mb-1.5">Kapasitas</span><input id="field-capacity" placeholder="10 pemain" class="w-full px-3.5 py-2.5 rounded-xl border border-[#E5E7EB] text-sm"></label>
+                <label class="sm:col-span-2"><span class="block text-sm font-semibold mb-1.5">Status</span><select id="field-status" class="w-full px-3.5 py-2.5 rounded-xl border border-[#E5E7EB] text-sm"><option>Aktif</option><option>Perawatan</option><option>Nonaktif</option></select></label>
+                <label class="sm:col-span-2"><span class="block text-sm font-semibold mb-1.5">Path gambar</span><input id="field-image" placeholder="images/foto-lapangan.jpg" class="w-full px-3.5 py-2.5 rounded-xl border border-[#E5E7EB] text-sm"></label>
+                <label class="sm:col-span-2"><span class="block text-sm font-semibold mb-1.5">Fasilitas <span class="font-normal text-[#6B7280]">(pisahkan dengan koma)</span></span><input id="field-facilities" placeholder="Parkir Luas, Musala, Shower" class="w-full px-3.5 py-2.5 rounded-xl border border-[#E5E7EB] text-sm"></label>
+                <label class="sm:col-span-2"><span class="block text-sm font-semibold mb-1.5">Deskripsi</span><textarea id="field-description" rows="4" class="w-full px-3.5 py-2.5 rounded-xl border border-[#E5E7EB] text-sm resize-y"></textarea></label>
+            </div>
+            <div class="flex justify-end gap-3 pt-2">
+                <button id="field-cancel" type="button" class="px-4 py-2.5 rounded-xl border border-[#E5E7EB] text-sm font-semibold">Batal</button>
+                <button type="submit" class="px-5 py-2.5 rounded-xl bg-[#15803D] hover:bg-green-800 text-white text-sm font-bold">Simpan</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="field-toast" class="hidden fixed bottom-5 right-5 z-[60] bg-[#14532D] text-white px-4 py-3 rounded-xl shadow-lg text-sm"></div>
+
+<script src="js/image-fallback.js"></script>
+<script src="js/data-lapangan.js"></script>
+<script src="js/field-storage.js"></script>
+<script src="js/booking-storage.js"></script>
+<script src="js/admin-lapangan.js"></script>
+<script src="js/admin-shell.js"></script>
+</body>
+</html>

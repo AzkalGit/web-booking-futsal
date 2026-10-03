@@ -1,0 +1,52 @@
+
+:root {
+  --ga-green-900: #14532D;
+  --ga-green-700: #15803D;
+  --ga-green-100: #DCFCE7;
+  --ga-orange-600: #EA580C;
+  --ga-orange-700: #C2410C;
+  --ga-page: #F9FAFB;
+  --ga-line: #E5E7EB;
+  --ga-text: #111827;
+  --ga-muted: #6B7280;
+  --ga-radius-lg: 1rem;
+  --ga-radius-xl: 1.25rem;
+  --ga-shadow-card: 0 1px 2px rgba(17,24,39,.04), 0 8px 24px rgba(17,24,39,.05);
+}
+
+/* Font dasar untuk halaman yang tidak punya stylesheet sendiri. */
+body { font-family: Inter, sans-serif; }
+.font-poppins { font-family: Poppins, sans-serif; }
+
+html { scroll-behavior: smooth; }
+body { min-width: 320px; }
+
+/* Consistent keyboard focus for prototype/demo usability. */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible,
+textarea:focus-visible { outline: 3px solid rgba(234,88,12,.28); outline-offset: 2px; }
+
+/* Keep sticky navigation from visually merging into the page. */
+.ga-topbar { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+
+/* Prevent mobile navigation from pushing the document wider. */
+.ga-mobile-menu { max-height: calc(100vh - 5rem); overflow-y: auto; }
+
+/* Common admin shell. */
+.ga-admin-shell { min-width: 0; }
+.ga-admin-sidebar { width: 16rem; flex: 0 0 16rem; }
+.ga-admin-content { min-width: 0; }
+.ga-admin-mobile-trigger { display: none; }
+
+@media (max-width: 767px) {
+  .ga-admin-sidebar { display: none; }
+  .ga-admin-mobile-trigger { display: inline-flex; }
+}
+
+/* Empty/table state helpers for consistent Figma capture. */
+.ga-table-cell { vertical-align: middle; }
+.ga-card { box-shadow: var(--ga-shadow-card); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat Booking - Garuda Arena</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config-shared.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/garuda-shared.css">
+</head>
+<body class="bg-[#F9FAFB] text-[#111827] min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="h-20 flex items-center justify-between">
+            <a href="index.html#home" class="flex items-center space-x-3">
+                <div class="w-11 h-11 bg-gradient-to-tr from-green-800 to-green-600 rounded-2xl flex items-center justify-center text-white shadow-md"><i class="fa-solid fa-futbol text-xl"></i></div>
+                <div><span class="text-xl font-bold text-green-800">Garuda Arena</span><span class="block text-xs text-gray-400 tracking-wider">FUTSAL &amp; SPORT</span></div>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="index.html#home" class="text-gray-600 hover:text-green-700">Beranda</a>
+                <a href="daftar-lapangan.html" class="text-gray-600 hover:text-green-700">Daftar Lapangan</a>
+                <a href="index.html#features" class="text-gray-600 hover:text-green-700">Fasilitas</a>
+                <a href="index.html#gallery" class="text-gray-600 hover:text-green-700">Galeri</a>
+                <a href="index.html#contact" class="text-gray-600 hover:text-green-700">Kontak</a>
+                <a href="riwayat-booking.html" class="text-green-700 font-semibold">Riwayat Booking</a>
+                <a href="admin-dashboard.html" class="text-gray-600 hover:text-green-700">Panel Admin</a>
+            </nav>
+            <div class="hidden md:flex items-center space-x-3 text-sm font-medium text-gray-700"><div id="user-initials" class="w-9 h-9 rounded-full bg-[#15803D] text-white flex items-center justify-center font-bold">FA</div><span id="user-name">Fadel</span></div>
+            <button id="mobile-menu-btn" class="md:hidden text-gray-700 p-2" aria-expanded="false" aria-controls="mobile-menu" aria-label="Buka Menu"><i class="fa-solid fa-bars text-2xl"></i></button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="ga-mobile-menu hidden md:hidden bg-white border-t border-gray-100 px-4 pt-2 pb-5 space-y-2">
+        <a href="index.html#home" class="block px-3 py-2 rounded-lg text-gray-600">Beranda</a>
+        <a href="daftar-lapangan.html" class="block px-3 py-2 rounded-lg text-gray-600">Daftar Lapangan</a>
+        <a href="index.html#features" class="block px-3 py-2 rounded-lg text-gray-600">Fasilitas</a>
+        <a href="index.html#gallery" class="block px-3 py-2 rounded-lg text-gray-600">Galeri</a>
+        <a href="index.html#contact" class="block px-3 py-2 rounded-lg text-gray-600">Kontak</a>
+        <a href="riwayat-booking.html" class="block px-3 py-2 rounded-lg bg-green-50 text-green-700 font-semibold">Riwayat Booking</a>
+        <a href="admin-dashboard.html" class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-green-700">Panel Admin</a>
+</div>
+</header>
+
+<main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3"><div><h1 class="font-poppins font-extrabold text-3xl">Riwayat Booking</h1><p class="text-[#6B7280] mt-1">Semua pesanan lapangan kamu ada di sini.</p></div><button id="refresh-history" type="button" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-[#E5E7EB] text-sm font-semibold hover:bg-gray-50"><i class="fa-solid fa-rotate"></i>Segarkan</button></div>
+        <div id="filter-bar" class="flex gap-2 overflow-x-auto pb-1">
+            <button data-filter="Semua" class="filter-btn shrink-0 px-4 py-2 rounded-full text-sm font-semibold bg-[#15803D] text-white">Semua</button>
+            <button data-filter="Menunggu pembayaran" class="filter-btn shrink-0 px-4 py-2 rounded-full text-sm font-semibold bg-white border border-[#E5E7EB] text-[#6B7280]">Menunggu pembayaran</button>
+            <button data-filter="Menunggu verifikasi" class="filter-btn shrink-0 px-4 py-2 rounded-full text-sm font-semibold bg-white border border-[#E5E7EB] text-[#6B7280]">Menunggu verifikasi</button>
+            <button data-filter="Dikonfirmasi" class="filter-btn shrink-0 px-4 py-2 rounded-full text-sm font-semibold bg-white border border-[#E5E7EB] text-[#6B7280]">Dikonfirmasi</button>
+            <button data-filter="Selesai" class="filter-btn shrink-0 px-4 py-2 rounded-full text-sm font-semibold bg-white border border-[#E5E7EB] text-[#6B7280]">Selesai</button>
+            <button data-filter="Dibatalkan" class="filter-btn shrink-0 px-4 py-2 rounded-full text-sm font-semibold bg-white border border-[#E5E7EB] text-[#6B7280]">Dibatalkan</button>
+        </div>
+        <div id="booking-list" class="space-y-4"></div>
+        <div id="empty-state" class="hidden bg-white rounded-2xl border border-dashed border-[#D1D5DB] p-10 text-center"><div class="w-16 h-16 bg-[#DCFCE7] text-[#15803D] rounded-full flex items-center justify-center mx-auto mb-4"><i class="fa-regular fa-calendar-xmark text-2xl"></i></div><h2 class="font-poppins font-bold text-xl">Belum ada booking</h2><p class="text-sm text-[#6B7280] mt-1 mb-5">Pilih lapangan dan jadwal untuk membuat booking pertama kamu.</p><a href="daftar-lapangan.html" class="inline-flex items-center bg-[#EA580C] hover:bg-[#C2410C] text-white px-5 py-2.5 rounded-xl font-bold text-sm">Booking Sekarang <i class="fa-solid fa-arrow-right ml-2"></i></a></div>
+    </div>
+</main>
+
+<footer class="bg-green-900 text-green-100/80 text-xs"><div class="max-w-7xl mx-auto px-4 sm:px-8 py-6 flex flex-col sm:flex-row gap-2 justify-between"><span>Prototipe tugas kuliah &ndash; Kelompok 6</span><span>&copy; 2026 Garuda Arena (merek fiktif)</span></div></footer>
+
+<script src="js/data-lapangan.js"></script>
+<script src="js/field-storage.js"></script>
+<script src="js/booking-storage.js"></script>
+<script src="js/riwayat-booking.js"></script>
+</body>
+</html>

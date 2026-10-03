@@ -1,0 +1,15 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Node (jika nanti dipakai)
+node_modules/
+npm-debug.log*
+
+# Arsip & log
+*.zip
+*.log
